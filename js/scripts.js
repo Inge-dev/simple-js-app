@@ -4,12 +4,13 @@ let pokemonList= [
     {name: 'Charmander', height: 6, type: ['ground', 'water']},
 ];
 
-for (let i = 0; i < pokemonList.length; i++){
-if(pokemonList[i].height > 6){ 
-    document.write("<p>" + pokemonList[i].name + " height: " +  pokemonList[i].height + " type: " +  pokemonList[i].type + " - What a big pokemon! " + "</p>");
-    //This will add a comment to the largest pokemon
+pokemonList.forEach(function(pokemon){
+if(pokemon.height > 6){ 
+    document.write ("<p>" +  pokemon.name + " height: " + pokemon.height + " type: " + pokemon.type +  " What a big pokemon! " + "<p>");
 }else{
-    document.write("<p>" + pokemonList[i].name + " height: " +  pokemonList[i].height + " type: " +  pokemonList[i].type + "<p>");   
-    //This will allow the smaller pokemons to be listed with name, height and type, but no comment
+    document.write ("<p>" +  pokemon.name + " height: " + pokemon.height + " type: " + pokemon.type + "<p>");
 }
-}
+});
+
+
+  
