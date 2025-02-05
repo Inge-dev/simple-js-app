@@ -12,20 +12,35 @@ let pokemonRepository = (function () {
     function getAll() {
       return pokemonList;
     }
+
+    function showDetails(pokemon) {
+      console.log(pokemon.name)
+    }
+
+    function addListItem(pokemon) {
+      let pokemonListElement = document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li');
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('pokemon-button');
+      listItem.appendChild(button);
+      pokemonListElement.appendChild(listItem);
+      button.addEventListener('click', function () {
+          showDetails(pokemon);
+      });
+    }
   
     return {
       add: add,
-      getAll: getAll
+      getAll: getAll,
+      addListItem: addListItem
     };
   })();
 
 pokemonRepository.add ({ name: 'Rapidash' });
-  
-pokemonRepository.getAll().forEach(function(pokemon){ // Updated .forEach loop to access pokemonList from within function
-    if(pokemon.height > 6){ 
-        document.write ("<p>" +  pokemon.name + " height: " + pokemon.height + " type: " + pokemon.type +  " What a big pokemon!" + "<p>");
-    }else{
-        document.write ("<p>" +  pokemon.name + " height: " + pokemon.height + " type: " + pokemon.type + "<p>");
-    }
-    });
 
+pokemonRepository.getAll().forEach(function(pokemon){ 
+  pokemonRepository.addListItem(pokemon);
+});
+
+ 
